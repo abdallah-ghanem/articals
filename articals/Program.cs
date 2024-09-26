@@ -1,5 +1,7 @@
+using articals.Code;
 using articals.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,14 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+// Register EmailSender as a singleton service  
+builder.Services.AddSingleton<IEmailSender, EmailSender>(); // Add this line to register the EmailSender  
+builder.Services.AddAuthorization(op=>
+{
+    op.AddPolicy("User", p => p.RequireClaim("User", "User"));
+    op.AddPolicy("Admin", p => p.RequireClaim("Admin", "Admin"));
+});
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -77,9 +82,11 @@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
-
-            <a class="btn-getstarted" href="#about">Get Started</a>
-
+            @if (SignInManager.IsSignedIn(User))//don show buttom get start else if you are user register
+            {
+                <a class="btn-getstarted" href="/portfolio-details">Get Started</a>
+                //you can add path at href to pages for users only href="/namepage"
+            }
         </div>
     </header>
 
