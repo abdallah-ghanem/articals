@@ -4,9 +4,8 @@ using System.Net;
 
 namespace articals.Code
 {
-    public class EmailSender : IEmailSender
+    public class Class : IEmailSender
     {
-
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var smtpClient = new SmtpClient("smtp.gmail.com") // Replace with your actual SMTP server // Use your SMTP server address  
@@ -17,7 +16,5 @@ namespace articals.Code
             };
             return smtpClient.SendMailAsync("gogo2161@gmail.com", email, subject, htmlMessage);
         }
-
     }
-
 }

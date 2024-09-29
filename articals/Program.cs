@@ -1,8 +1,15 @@
 using articals.Code;
+using articals.Core;
 using articals.Data;
+using articals.Data.SqlServerEF;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using FluentAssertions.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +24,26 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // Register EmailSender as a singleton service  
 builder.Services.AddSingleton<IEmailSender, EmailSender>(); // Add this line to register the EmailSender  
-builder.Services.AddAuthorization(op=>
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
+
+//
+builder.Services.AddSingleton<IDataHelper<Catigory>, CatigoryEntity>();
+
+
+builder.Services.AddAuthorization(op =>
 {
     op.AddPolicy("User", p => p.RequireClaim("User", "User"));
     op.AddPolicy("Admin", p => p.RequireClaim("Admin", "Admin"));
 });
 builder.Services.AddRazorPages();
+
+
+
+//
+builder.Services.AddMvc(op=>op.EnableEndpointRouting=false);
+//builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
+
 
 var app = builder.Build();
 
@@ -40,6 +61,10 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+
+//add Mvc
+app.UseMvcWithDefaultRoute();
 
 app.UseRouting();
 

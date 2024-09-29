@@ -5,11 +5,16 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "articals", "articals\articals.csproj", "{F067A63C-D7EE-42E7-80EF-5349F71CC683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "articals.Core", "articals.Core\articals.Core.csproj", "{00693E03-1B0B-4E84-9C33-B3CEC183D7E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "articals.Core", "articals.Core\articals.Core.csproj", "{00693E03-1B0B-4E84-9C33-B3CEC183D7E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "articals.Data", "articals.Data\articals.Data.csproj", "{EE8D20C1-DDF4-4986-BBC7-393F304CB63A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "articals.Data", "articals.Data\articals.Data.csproj", "{EE8D20C1-DDF4-4986-BBC7-393F304CB63A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "articals.Tests", "articals.Tests\articals.Tests.csproj", "{42AC881F-AB9C-4286-9853-58C6E9969221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "articals.Tests", "articals.Tests\articals.Tests.csproj", "{42AC881F-AB9C-4286-9853-58C6E9969221}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8039AD63-35F9-46FA-9427-AA01F9E739C0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
