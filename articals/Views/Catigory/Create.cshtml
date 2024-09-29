@@ -1,15 +1,14 @@
-﻿@model IEnumerable<articals.Core.Catigory>
+﻿@model articals.Core.Catigory
 
 @{
-    ViewData["Title"] = "List of Catigory";
-    //Layout = "~/Views/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Create";
+   // Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 
 
 
-    
-    <main class="container mt-5 pt-5">
+<main class="container mt-5 pt-5">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -88,40 +87,34 @@
 
         </div>
     </header>
+<h1>Create</h1>
+
+<h4>Catigory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+ <br />
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</main>
 
 
-        <h1>Catigories</h1>
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.id)</th>
-                    <th>@Html.DisplayNameFor(model => model.name)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.id)</td>
-                        <td>@Html.DisplayFor(modelItem => item.name)</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                            @* <a asp-action="Details" asp-route-id="@item.id">Details</a> | *@
-                            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-                        </td>
-                    </tr>
-                }
-           
-            </tbody>
-        </table>
-    </main>
-
-    
-    
-
-    
-
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

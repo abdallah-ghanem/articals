@@ -20,6 +20,7 @@ namespace articals.Data.SqlServerEF
             if (db.Database.CanConnect())
             {
                 db.Catigory.Add(table);
+                db.SaveChanges();//every write proccess should add this line
                 return 1;
             }
             else
@@ -34,6 +35,7 @@ namespace articals.Data.SqlServerEF
             {
                 _table = Find(Id);
                 db.Catigory.Remove(_table);
+                db.SaveChanges();
                 return 1;
             }
             else
@@ -47,7 +49,8 @@ namespace articals.Data.SqlServerEF
             db = new DBContext();
             if (db.Database.CanConnect())
             {
-                db.Catigory.Add(table);
+                db.Catigory.Update(table);
+                db.SaveChanges();
                 return 1;
             }
             else
